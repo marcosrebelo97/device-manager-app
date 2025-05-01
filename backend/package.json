@@ -2,10 +2,11 @@
   "name": "backend-device-manager",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "nodemon src/index.js",
-    "start:prod": "node src/index.js"
+    "start:prod": "node src/index.js",
+    "seed": "npm run generate && npx prisma db seed",
+    "generate": "npx prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -24,5 +25,8 @@
     "prisma": "^6.7.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "prisma": {
+    "seed": "ts-node ./prisma/seed/data.ts"
   }
 }

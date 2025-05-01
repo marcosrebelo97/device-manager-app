@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend_eld
+    ports:
+      - "${PORT_BACKEND}:3306"
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_URL: "mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE}"
+    volumes:
+      - ./backend:/app
+    command: >
+      sh -c "
+        npx prisma generate &&
+        npx prisma migrate deploy &&
+        npx prisma db seed &&
+        npm run start
+      "
+    networks:
+      - app-network
+
+  # frontend:
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #   container_name: frontend_eld
+  #   ports:
+  #     - "${PORT_FRONTEND}:${PORT_FRONTEND}"
+  #   depends_on:
+  #     - backend
+  #   networks:
+  #     - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
