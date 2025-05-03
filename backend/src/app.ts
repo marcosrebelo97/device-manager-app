@@ -3,8 +3,11 @@ import cors from 'cors';
 import dotenv from "dotenv";
 
 import router from "./router/index";
+import validateEnv from "./utils/validateEnv";
 
 dotenv.config();
+validateEnv();
+
 const PORT = process.env.PORT_BACKEND || 3000;
 const app = express();
 
