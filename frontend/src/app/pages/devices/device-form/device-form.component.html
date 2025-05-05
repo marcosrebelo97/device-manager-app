@@ -1,0 +1,26 @@
+<h2>Create Device</h2>
+
+<form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+  <label for="categoryId">Category</label>
+  <select formControlName="categoryId" id="categoryId">
+    <option [value]="null">Select...</option>
+    <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+  </select>
+  <div *ngIf="deviceForm.get('categoryId')?.invalid && deviceForm.get('categoryId')?.touched">
+    Category is required.
+  </div>
+
+  <label for="color">Color</label>
+  <input id="color" type="text" formControlName="color" />
+  <div *ngIf="deviceForm.get('color')?.invalid && deviceForm.get('color')?.touched">
+    Color is required, must be at most 16 characters, and contain only letters.
+  </div>
+ 
+  <label for="partNumber">Part Number</label>
+  <input id="partNumber" type="number" formControlName="partNumber" />
+  <div *ngIf="deviceForm.get('partNumber')?.invalid && deviceForm.get('partNumber')?.touched">
+    Must be a positive number.
+  </div>
+
+  <button type="submit" [disabled]="deviceForm.invalid">Submit</button>
+</form>
