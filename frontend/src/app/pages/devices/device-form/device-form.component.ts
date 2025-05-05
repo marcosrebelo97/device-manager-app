@@ -25,7 +25,7 @@ export class DeviceFormComponent implements OnInit {
     this.deviceForm = this.fb.group({
       categoryId: [null, Validators.required],
       color: ['', [Validators.required, Validators.maxLength(16), Validators.pattern(/^[A-Za-zÀ-ÿ\s]+$/)]],
-      partNumber: [null, [Validators.required, Validators.min(1)]] //Validators.pattern('^[1-9][0-9]*$')]]
+      partNumber: [null, [Validators.required, Validators.min(1)]]
     });
   }
 

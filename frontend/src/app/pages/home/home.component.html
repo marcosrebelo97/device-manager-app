@@ -1,3 +1,12 @@
-<h1>Welcome</h1>
-<button [routerLink]="['/categories']">Manager categories</button>
-<button [routerLink]="['/devices']">Manager devices</button>
+<div class="card">
+    <h2>Welcome</h2>
+    <ul style="list-style: none; padding: 0; display: flex; gap: 16px;">
+      <li>
+        <button [routerLink]="['/categories']">Categories</button>
+      </li>
+      <li>
+        <button [routerLink]="['/devices']">Devices</button>
+      </li>
+    </ul>
+  </div>
+  

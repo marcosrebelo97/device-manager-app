@@ -1,13 +1,13 @@
-<h2>Create Category</h2>
+<div class="card">
+  <h2>Create</h2>
 
-<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
-  <label for="name">Name:</label>
-  <input id="name" type="text" formControlName="name" />
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name" maxlength="128" />
+    <div *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched" class="error">
+      Name is required (max 128 characters).
+    </div>
 
-  <div *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched">
-    <small *ngIf="categoryForm.get('name')?.errors?.['required']">Name is required.</small>
-    <small *ngIf="categoryForm.get('name')?.errors?.['maxlength']">Max 128 characters allowed.</small>
-  </div>
-
-  <button type="submit" [disabled]="categoryForm.invalid">Create</button>
-</form>
+    <button type="submit" [disabled]="categoryForm.invalid">Submit</button>
+  </form>
+</div>

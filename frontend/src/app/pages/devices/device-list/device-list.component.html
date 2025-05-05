@@ -1,24 +1,26 @@
-<h2>Device List</h2>
+<div class="card">
+  <h2>List</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Category ID</th>
-      <th>Color</th>
-      <th>Part Number</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let device of devices">
-      <td>{{ device.id }}</td>
-      <td>{{ device.categoryId }}</td>
-      <td>{{ device.color }}</td>
-      <td>{{ device.partNumber }}</td>
-      <td>
-        <button (click)="remove(device.id)">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Category</th>
+        <th>Color</th>
+        <th>Part Number</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let device of devices">
+        <td>{{ device.id }}</td>
+        <td>{{ device.categoryId }}</td>
+        <td>{{ device.color }}</td>
+        <td>{{ device.partNumber }}</td>
+        <td>
+          <button (click)="remove(device.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

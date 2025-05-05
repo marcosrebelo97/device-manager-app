@@ -27,8 +27,5 @@ export class DeviceListComponent implements OnInit {
     if (confirm('Are you sure you want to delete this device?')) {
       this.deviceService.delete(id).subscribe(() => this.loadDevices());
     }
-    /*this.deviceService.delete(id).subscribe(() => {
-      this.loadDevices();
-    });*/
   }
 }
