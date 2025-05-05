@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
-import { prisma } from "prisma/client";
+import { prisma } from "../../../prisma/client"
 
 import * as categoryService from "../category/category.service";
 import { CreateCategoryDTO } from "./category.types";

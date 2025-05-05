@@ -30,17 +30,20 @@ services:
     networks:
       - app-network
 
-  # frontend:
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #   container_name: frontend_eld
-  #   ports:
-  #     - "${PORT_FRONTEND}:${PORT_FRONTEND}"
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - app-network
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend_eld
+    ports:
+      - "${PORT_FRONTEND}:4200"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - app-network
 
 networks:
   app-network:

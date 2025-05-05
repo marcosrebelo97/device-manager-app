@@ -1,6 +1,6 @@
 import { Request, Response, RequestHandler } from "express";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
-import { prisma } from "prisma/client";
+import { prisma } from "../../../prisma/client"
 
 import * as deviceService from "../device/device.service";
 import { createDeviceSchema } from "../device/device.schema";
