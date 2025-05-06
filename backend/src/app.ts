@@ -9,7 +9,7 @@ dotenv.config();
 validateEnv();
 
 const PORT = process.env.PORT_BACKEND || 3000;
-const urlOrigin = process.env.FRONTEND_ENDPOINT || "http://localhost:4200";
+const urlOrigin = process.env.FRONTEND_ENDPOINT || "https://device-manager-app.vercel.app";
 const app = express();
 
 app.use(cors({
