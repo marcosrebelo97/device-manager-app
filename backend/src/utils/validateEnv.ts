@@ -15,6 +15,10 @@ function validateEnv() {
             desc: 'Database connection URL',
             example: 'mysql://user:password@host:port/database'
         }),
+        FRONTEND_ENDPOINT: str({
+            desc: 'Frontend application endpoint',
+            example: 'http://localhost:4200'
+        })
     })
 }
 

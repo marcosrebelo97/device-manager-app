@@ -9,9 +9,14 @@ dotenv.config();
 validateEnv();
 
 const PORT = process.env.PORT_BACKEND || 3000;
+const urlOrigin = process.env.FRONTEND_ENDPOINT || "http://localhost:4200";
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:4200', urlOrigin],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
+
 app.use(express.json());
 
 app.use(router);
