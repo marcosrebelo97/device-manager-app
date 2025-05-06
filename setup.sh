@@ -13,7 +13,7 @@ if ! docker ps --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
 fi
 
 echo " >>> Waiting for MySQL to be ready..."
-until docker exec -it $CONTAINER_NAME mysqladmin ping -h mysql_eld --silent; do
+until docker exec -it mysql_eld mysqladmin ping -h 127.0.0.1 --silent; do
   echo " >>> Still waiting for MySQL..."
   sleep 2
 done

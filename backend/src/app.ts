@@ -1,6 +1,7 @@
 import express from "express";
 import cors from 'cors';
 import dotenv from "dotenv";
+import { setupSwagger } from './swagger';
 
 import router from "./router/index";
 import validateEnv from "./utils/validateEnv";
@@ -18,7 +19,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
+setupSwagger(app);
 app.use(router);
 
 app.listen(PORT, () => {
