@@ -4,10 +4,11 @@
   "main": "app.ts",
   "scripts": {
     "start": "nodemon src/app.ts",
-    "start:prod": "node src/app.ts",
+    "start:prod": "node dist/app.js",
     "seed": "npm run generate && npx prisma db seed",
     "generate": "npx prisma generate",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
